@@ -24,13 +24,13 @@ export async function fetchPosts() {
 
 export async function fetchPostById(id) {
   let post;
-  try {
-    const response = await fetch(`${baseUrl}/posts/:${id}`);
-    post = await response.json();
-  } catch (error) {
-    console.error('Post not found');
+
+  const response = await fetch(`${baseUrl}/posts/${id}`);
+  post = await response.json();
+
+  if (!post.title) {
+    console.error(post.message);
     redirect('/posts');
-    return;
   }
 
   return post;
@@ -39,7 +39,6 @@ export async function fetchPostById(id) {
 export async function createPost(formData) {
   const post = {
     ...Object.fromEntries(formData),
-    adopted: 0,
   };
 
   const response = await fetch(`${baseUrl}/posts`, {

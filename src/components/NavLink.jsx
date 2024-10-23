@@ -10,7 +10,7 @@ function NavLink({ children, href, ...props }) {
   const inactiveStyle = 'text-slate-900 hover:bg-cyan-700 hover:text-white';
 
   return (
-    <Link href={href} {...props} className={`${isActive ? activeStyle : inactiveStyle} rounded-md px-3 py-2 text-sm font-medium`}>
+    <Link href={href} {...props} className={`${isActive ? activeStyle : inactiveStyle} rounded-lg px-6 py-2 text-sm font-medium`}>
       {children}
     </Link>
   );
