@@ -2,6 +2,7 @@
 
 import { createPost } from '@/actions';
 import { useState } from 'react';
+import Button from './Button';
 
 function Modal() {
   const initialPostState = {
@@ -22,12 +23,12 @@ function Modal() {
 
   return (
     <>
-      <button
+      <Button
         className="bg-cyan-700 px-10 py-2 rounded-full text-sm font-semibold text-slate-50 hover:bg-cyan-800 transition-all duration-200"
         onClick={() => setShow(true)}
       >
         New Post
-      </button>
+      </Button>
       {show && (
         <div className="inset-0 fixed flex justify-center items-center flex-col z-20 overflow-hidden">
           <div className="bg-black absolute z-0 opacity-70 inset-0 "></div>

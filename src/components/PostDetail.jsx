@@ -1,5 +1,6 @@
 'use client';
 import { deletePost } from '@/actions';
+import Comments from './Comments';
 
 function PostDetail({ post }) {
   const confirmDelete = () => {
@@ -8,11 +9,11 @@ function PostDetail({ post }) {
 
   return (
     <div className="flex items-start h-full flex-1 text-start flex-col mt-10 mx-auto container py-6 px-10 gap-4">
-      <div className="flex items-center justify-between flex-0 mx-auto container py-6 px-10 border bg-slate-100 rounded-2xl">
+      <div className="flex items-center justify-between flex-0 mx-auto container py-6 px-10 border bg-slate-50 rounded-2xl">
         <h1 className="font-bold text-4xl">{post.title}</h1>
         <button
           onClick={confirmDelete}
-          className="text-xl text-cyan-800 border border-cyan-800/[.5] p-4 rounded-full hover:border-red-400 hover:bg-red-400 hover:text-slate-50 transition-all duration-200"
+          className="text-sm text-cyan-800 p-4 rounded-full bg-slate-100 hover:border-red-400 hover:bg-red-400 hover:text-slate-50 transition-all duration-200"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
             <path
@@ -22,9 +23,10 @@ function PostDetail({ post }) {
           </svg>
         </button>
       </div>
-      <div className="flex items-start h-full flex-1 flex-col mx-auto container p-10 border bg-slate-100 rounded-2xl">
+      <div className="flex items-start h-full flex-1 flex-col mx-auto container p-10 border bg-slate-50 rounded-2xl min-h-96">
         <div className="">{post.description}</div>
       </div>
+      <Comments post={post} />
     </div>
   );
 }

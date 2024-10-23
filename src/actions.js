@@ -63,3 +63,27 @@ export async function deletePost(id) {
   revalidatePath(`/posts/[id]`, 'page');
   redirect(`/posts`);
 }
+
+export async function addComment(formData, id) {
+  const comment = {
+    ...Object.fromEntries(formData),
+  };
+  const response = await fetch(`${baseUrl}/posts/${id}/comments`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(comment),
+  });
+
+  revalidatePath('/posts');
+  revalidatePath(`/posts/[id]`, 'page');
+}
+
+export async function deleteComment(id) {
+  const response = await fetch(`${baseUrl}/posts/comments/${id}`, {
+    method: 'DELETE',
+    headers,
+  });
+
+  revalidatePath('/posts');
+  revalidatePath(`/posts/[id]`, 'page');
+}
